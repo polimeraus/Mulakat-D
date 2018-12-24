@@ -1,11 +1,12 @@
-﻿using System;
-
+﻿
 namespace DorukOtomotiv.Libraries.Delay
 {
     public class DelayType
     {
-        int DelayTypeID { get; set; }
-        string DelayTypeName { get; set; }
+        // porperties
+        public int DelayTypeID { get; set; }
+        public string DelayTypeName { get; set; }
+
 
         // constructor function
         public DelayType(int delayTypeID, string delayTypeName)

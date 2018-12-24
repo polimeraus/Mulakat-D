@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace DorukOtomotiv.Libraries.Delay
 {
     public class DelayRecord
     {
+        // porperties
         public long DelayRecordID { get; set; }
         public int DelayTypeID { get; set; }
         public DateTime StartDateTime { get; set; }
@@ -19,15 +18,6 @@ namespace DorukOtomotiv.Libraries.Delay
             DelayTypeID = delayTypeID;
             StartDateTime = startDateTime;
             FinishDateTime = finishDateTime;
-        }
-
-        // constructor default function
-        public DelayRecord()
-        {
-            DelayRecordID = 0;
-            DelayTypeID = 0;
-            StartDateTime = new DateTime();
-            FinishDateTime = new DateTime();
         }
     }
 }
