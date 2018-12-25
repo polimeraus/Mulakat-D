@@ -16,18 +16,21 @@ namespace DorukOtomotiv.Business
     {
         public List<DelayReportItem> GetReportData()
         {
-            WorkOrderList isemirleri = new WorkOrderList();
-            DelayTypeList dt = new DelayTypeList();
-            DelayRecordList duraksamalar = new DelayRecordList();
-
+            // master data to be prepared
             List<DelayReportItem> reportData = new List<DelayReportItem>();
+
+            // we clear the list first
             reportData.Clear();
 
-
-            //her bir iş emrini bir döngüye sokalım,
+            // other requirements for data
+            WorkOrderList isemirleri = new WorkOrderList();
+            DelayTypeList dtl = new DelayTypeList();
+            DelayRecordList duraksamalar = new DelayRecordList();
+            
+            // we loop for each work order 
             foreach (WorkOrder isEmri in isemirleri.workOrderList)
             {
-                //sonra da he rbir iş emri için gecikme (delay) tablosunu tamamen gezelim
+                // we loop DelayRecord table for each work order
                 foreach (DelayRecord delay in duraksamalar.delayRecordList)
                 {
                     if ((isEmri.StartDateTime >= delay.FinishDateTime) || (isEmri.FinishDateTime <= delay.StartDateTime))
@@ -37,42 +40,38 @@ namespace DorukOtomotiv.Business
                     }
                     else
                     {
+                        // if there is an conflict than calculate the minutes and add them to the related delay type category
                         DateTime conflictStartDateTime, conflictFinishDateTime;
-                        //çakışma varsa çakışma süresini hesaplayalım ve ilgili delay kategorisinde toplayalım
 
-                        //başlangıç
-                        if (delay.StartDateTime <= isEmri.StartDateTime)  //delay in başlangıcı is emrinden önce ise başlangıcı is emri olarak kabul etmeliyiz
+                        // determine the conflict start
+                        // if the delay start datetime is BEFORE than the work order datetime, set the conflict start to work order start
+                        if (delay.StartDateTime <= isEmri.StartDateTime)  
                             conflictStartDateTime = isEmri.StartDateTime;
                         else
-                            conflictStartDateTime = delay.StartDateTime;  //şayet delay in başlangıcı is emrinin başlangıcından sonra ise başlangıç olarak delay başlangıcını kabul ediyoruz
+                            // if the delay start datetime is AFTER the the start to work order start datetime,  set the conflict start to delay start
+                            conflictStartDateTime = delay.StartDateTime;
 
-                        //bitiş
-                        if (delay.FinishDateTime >= isEmri.FinishDateTime)  //delay in bitişi is emrini geçmiş ise sadece is emri bitene kadar olan kısmı alıyoruz
+                        // determine the conflict finish
+                        //delay in bitişi is emrini geçmiş ise sadece is emri bitene kadar olan kısmı alıyoruz
+                        if (delay.FinishDateTime >= isEmri.FinishDateTime)  
                             conflictFinishDateTime = isEmri.FinishDateTime;
                         else
                             conflictFinishDateTime = delay.FinishDateTime;
 
 
-                        //burayı belki bir true false ile kontrol edebiliriz, yani çakışma olmuşsa true ya dönen bir değişken gibi...
-                        reportData.Add(
-                                        new DelayReportItem(
+                        // add the item to the report data to show
+                        reportData.Add( new DelayReportItem(
                                             isEmri.WorkOrderID,
                                             delay.DelayTypeID,
-                                            (dt.GetDelayTypeNameByID(delay.DelayTypeID)),
+                                            (dtl.GetDelayTypeNameByID(delay.DelayTypeID)),
                                             conflictStartDateTime,
                                             conflictFinishDateTime,
                                             (int)conflictFinishDateTime.Subtract(conflictStartDateTime).TotalMinutes
                                             ));
-
-                        //iki tarih arasını dakika olarak ölçmek istesek ?
-                        //TimeSpan span = conflictFinishDateTime.Subtract(conflictStartDateTime);
-                        //span.TotalMinutes;
-                        //int intMinutes = TimeSpan.FromMinutes(span);
                     }
                 }
             }
-
-
+            
             return reportData;
         }
 
@@ -240,10 +239,5 @@ namespace DorukOtomotiv.Business
         {
             return ConvertHTMLTablesToDataTable(GetRportHTMLFromReportData());
         }
-
-
     }
-
-
-
 }
