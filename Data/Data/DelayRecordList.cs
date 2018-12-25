@@ -7,8 +7,17 @@ namespace DorukOtomotiv.Data
 {
     public class DelayRecordList
     {
-        //bu sonradan private yapılıp arabirim üretilecek, ayrıca bu sınıflar interface den türeyecek, ayrıca datagirişi de öyle tekrar eden kültür kodları olmayacak, tek fonksyondan yapılacak, kpod tekrarı hoşl değil
-        public List<DelayRecord> delayRecordList { get; set; }
+        // properties
+        private List<DelayRecord> _delayRecordList;
+        public List<DelayRecord> delayRecordList
+        {
+            get {
+                return _delayRecordList;
+            }      
+            set {
+                _delayRecordList = value;
+            }
+        }
 
         // constructor function
         public DelayRecordList()

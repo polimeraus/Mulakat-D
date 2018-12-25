@@ -8,9 +8,9 @@ namespace DorukOtomotiv
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            #region previous reports
             //var reportData = new Implementations().GetReportData();
 
-            //burada raporu gride dökelim,    
             /*
             var sonuc = from c in reportData
                         group c by new
@@ -36,7 +36,7 @@ namespace DorukOtomotiv
             GridView2.DataSource = reportData.ToList();
             GridView2.DataBind();
             */
-
+            #endregion
 
             string s = new Implementations().GetRportHTMLFromReportData();                 
             Response.Write(s);

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DorukOtomotiv.Libraries.Delay;
 
@@ -9,11 +8,21 @@ namespace DorukOtomotiv.Data
     public class DelayTypeList
     {
         // properties
-        public List<DelayType> delayTypeList { get; set; }
+        private List<DelayType> _delayTypeList;
+        public List<DelayType> delayTypeList
+        {
+            get {
+                return _delayTypeList;
+            }
+            set {
+                _delayTypeList = value;
+            }
+        }
 
         // constructor function
         public DelayTypeList()
         {
+            //when the object has been instanced the datas is fulled to object
             setData();
         }
 
@@ -29,6 +38,7 @@ namespace DorukOtomotiv.Data
             };
         }
 
+        // gives delay type Name from DelayTypeID
         public string GetDelayTypeNameByID(int delayTypeID)
         {
             return delayTypeList.Where(x => x.DelayTypeID == delayTypeID).SingleOrDefault().DelayTypeName.ToString();

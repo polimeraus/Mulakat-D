@@ -8,12 +8,22 @@ namespace DorukOtomotiv.Data
     public class WorkOrderList
     {
         // properties
-        public List<WorkOrder> workOrderList { get; set; }
+        private List<WorkOrder> _workOrderList;
+        public List<WorkOrder> workOrderList
+        {
+            get {
+                return _workOrderList;
+            }
+            set {
+                _workOrderList = value;
+            }
+        }
 
         // constructor function
         public WorkOrderList()
         {
-            setData();  //when the object has been instanced the datas is fulled to object
+            //when the object has been instanced the datas is fulled to object
+            setData();  
         }
 
         // workOrderList is being fulled with data

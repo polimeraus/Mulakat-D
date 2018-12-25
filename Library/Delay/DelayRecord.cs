@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace DorukOtomotiv.Libraries.Delay
 {
@@ -18,6 +17,6 @@ namespace DorukOtomotiv.Libraries.Delay
             DelayTypeID = delayTypeID;
             StartDateTime = startDateTime;
             FinishDateTime = finishDateTime;
-        }
+        }        
     }
 }

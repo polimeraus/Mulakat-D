@@ -11,9 +11,9 @@ using DorukOtomotiv.Business;
 
 namespace PresentationWin
 {
-    public partial class Form1 : Form
+    public partial class DorukOtomotiv : Form
     {
-        public Form1()
+        public DorukOtomotiv()
         {
             InitializeComponent();
             DataTable reportData = new Implementations().GetRportDataFromHTMLToDataTable();            

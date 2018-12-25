@@ -2,9 +2,6 @@
 
 namespace DorukOtomotiv.Libraries.Report
 {
-    //hatta iş emri ID si bile interface den gelebilir 
-    //interface hem buraya hem de delay e kalıtım bırakmalı    
-    //şimdilik elimle yazıyorum sonradna iki interface den kalıtarak alacak şekilde yazacaz
     public class DelayReportItem
     {
         // properties
