@@ -92,8 +92,8 @@ namespace DorukOtomotiv.Business
 
             // each work order get a table row
             string s = "<table border=1 cellpadding=5 cellspacing=2 class='blueTable'>";
-            s += "<thead>";
-            s += "<tr>";
+            //s += "<thead>";
+            s += "<tr class='hedd'>";
             s += "<th>İş Emri</th>";
 
             foreach (var itemDelay in delayTypesDistinct)
@@ -105,24 +105,24 @@ namespace DorukOtomotiv.Business
 
             s += "<th>Toplam</th>";
             s += "</tr>";
-            s += "</thead>";
+            //s += "</thead>";
 
-            s += "<tbody>";
+            //s += "<tbody>";
             foreach (var itemIs in isemirleriDistinct)
             {
                 s += "<tr>";
-                s += "<td>" + itemIs.WorkOrderID.ToString() + "</td>";  //ilk kolon iş emrinin kendisi
+                s += "<td>" + itemIs.WorkOrderID.ToString() + "</td>";  // first column is the work order it shelf
                 foreach (var itemDelay in delayTypesDistinct)
                 {
-                    //o is emrinin o delay tipindeki tüm toplamı lazıms...                    
+                    // sum all work order in relted delay type
                     s += "<td>" + reportData.Where(x => x.WorkOrderID == itemIs.WorkOrderID && x.DelayTypeID == itemDelay.DelayTypeID).Sum(y => y.DelayMinutes).ToString() + "</td>";
                 }
 
-                //en sağdaki toplam sütunu için bir koloın daha ekliyoruz, burada o iş emrinin tüm satır toplamı yer alacak
+                // we add a column very right for sum column which means sum of all line of delay type of work order
                 s += "<td>" + reportData.Where(x => x.WorkOrderID == itemIs.WorkOrderID).Sum(y => y.DelayMinutes).ToString() + "</td>";
                 s += "</tr>";
             }
-            s += "</tbody>";
+            //s += "</tbody>";
 
             // sum rows
             s += "<tfoot>";

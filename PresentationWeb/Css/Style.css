@@ -26,17 +26,17 @@
         background: linear-gradient(to bottom, #4786b2 0%, #226ea2 66%, #0A5E98 100%);
         border-bottom: 2px solid #444444;
     }
+        
+    table.blueTable thead th {
+        font-size: 15px;
+        font-weight: bold;
+        color: #FFFFFF;
+        border-left: 2px solid #D0E4F5;
+    }
 
-        table.blueTable thead th {
-            font-size: 15px;
-            font-weight: bold;
-            color: #FFFFFF;
-            border-left: 2px solid #D0E4F5;
-        }
-
-            table.blueTable thead th:first-child {
-                border-left: none;
-            }
+    table.blueTable thead th:first-child {
+        border-left: none;
+    }
 
     table.blueTable tfoot {
         font-size: 16px;

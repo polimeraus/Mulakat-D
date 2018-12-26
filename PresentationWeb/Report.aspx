@@ -9,6 +9,20 @@
         body {
             font: normal normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
         }
+    .hedd {
+        background: #0A5E98;
+        background: -moz-linear-gradient(top, #4786b2 0%, #226ea2 66%, #0A5E98 100%);
+        background: -webkit-linear-gradient(top, #4786b2 0%, #226ea2 66%, #0A5E98 100%);
+        background: linear-gradient(to bottom, #4786b2 0%, #226ea2 66%, #0A5E98 100%);
+        border-bottom: 2px solid #444444;
+    }
+    .hedd th {
+                font-size: 15px;
+                font-weight: bold;
+                color: #FFFFFF;
+                border-left: 2px solid #D0E4F5;
+            }
+
     </style>
     <link href="Css/Style.css" rel="stylesheet" />
 </head>
