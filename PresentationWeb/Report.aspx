@@ -5,11 +5,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Doruk Otomotiv</title>
+    <style>
+        body {
+            font: normal normal 13px Arial, Tahoma, Helvetica, FreeSans, sans-serif;
+        }
+    </style>
+    <link href="Css/Style.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-
 
             <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
